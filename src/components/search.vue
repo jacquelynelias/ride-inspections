@@ -228,11 +228,15 @@ export default {
     
     search: function(evt) {
         evt.preventDefault();
-        var url = 'https://6es5edr4u6.execute-api.us-east-1.amazonaws.com/dev/api/search'
+        var url = 'https://6es5edr4u6.execute-api.us-east-1.amazonaws.com/dev/api/search' //base url for search endpoint
         var parameters = '';
+        
+        //Checks to see is user searched by Amusement or Carnival
         if(this.input['type']) {
             parameters = parameters + "type="+this.input['type']
         }
+
+        //Checks to see if user searched by name
         if(this.input['name']) {
             if (parameters) {
                 parameters = parameters + "&name="+this.input['name']
@@ -240,6 +244,8 @@ export default {
                 parameters = "name="+this.input['name']
             }
         }
+
+        //CHecks to see if user searched by city
         if(this.input['city']) {
             if (parameters) {
                 parameters = parameters + "&city="+this.input['city']
@@ -247,6 +253,8 @@ export default {
                 parameters = "city="+this.input['city']
             }            
         }
+
+        //Checks to see if user searched by county
         if(this.input['county']) {
             if (parameters) {
                 parameters = parameters + "&county="+this.input['county']
@@ -254,6 +262,8 @@ export default {
                 parameters = "county="+this.input['county']
             }
         }
+
+        //Checks to see if user searched by zipcode
         if(this.input['zipcode']) {
             if (parameters) {
                 parameters = parameters + "&zipcode="+this.input['zipcode']
@@ -261,13 +271,17 @@ export default {
                 parameters = "zipcode="+this.input['zipcode']
             }
         }
+
+        //Adds inputs as query string parameters if they exist
         if (parameters) {
             url = url + '?' + parameters
 
         }
-        console.log(url)
+
+
+        //API call to search endpoint
         document.body.style.cursor='wait';
-        document.getElementById("location_input").text = "";
+        //document.getElementById("location_input").text = "";
         let self = this
         axios.get(url)
         .then(function (response) {
@@ -276,15 +290,16 @@ export default {
             self.click = true;
             self.currentPage=1;
         })
-        .catch((err) => console.log(err))
-        console.log(this.results)       
+        .catch((err) => console.log(err))    
 
     },
+    //Function to clear search inputs
     formReset(evt) {
       evt.preventDefault();
       /* Reset our form values */
       this.input = {}
     },
+    //Function to draw canvas - still working on
     draw: function() {
         var linePropWidth = view.bounds.width; //2000 is actual width proportion
         var lineProHeight = linePropWidth / 6.5; //100 is actual height proportion
@@ -304,9 +319,7 @@ export default {
 		// Draw the view now:
 		paper.view.draw();
     },
-    handleResize(event) {
-        
-    },
+    //Original search function by location -- not in use
     searchLocation: function(location) {
       this.results = "";
       this.name = "";
@@ -325,6 +338,7 @@ export default {
         .catch((err) => console.log(err))
         console.log(this.results)
     },
+    //Original search function by name -- not in use
     searchName: function(evt) {
       this.results = "";
       this.location = "";
@@ -345,6 +359,7 @@ export default {
         */
         console.log(this.results)      
     },
+    //Turns string to camel case
     toProperCase: function(str) {
       return str.replace(/\w\S*/g, function(txt) {
         return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();

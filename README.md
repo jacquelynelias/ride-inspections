@@ -1,29 +1,22 @@
-# ride-inspection-db
+#Ride Inspection Front End Web App
+##Overview
+This web app is built using vue.js. It displays rollercoaster and amusement park inspections. It has the capability to search for parks based on location or name and view the rides and inspections associated with those rides. 
 
 > A Vue.js project
+##Links
+Scraper: https://bitbucket.org/ajcnewsapp/scrapers_jre/src/master/
+API: https://bitbucket.org/ajcnewsapp/ride-inspections-api/src/master/
 
-## Build Setup
-
+## Build
 ``` bash
 # install dependencies
 npm install
-
 # serve with hot reload at localhost:8080
 npm run dev
-
 # build for production with minification
 npm run build
 ```
-
 For detailed explanation on how things work, consult the [docs for vue-loader](http://vuejs.github.io/vue-loader).
-
-##License 
-
-
-##File structure
-
-##API 
-This repository for this project's API can be found here. It uses serverless and AWS Lambda Functions
 
 ##Data Structures
 
@@ -49,114 +42,35 @@ This repository for this project's API can be found here. It uses serverless and
                   "comment":"SECURE CHAIN LINK FENCE ON ENTERANCE AND EXIT LINES.",
                   "condition_num":10
                },
-               {  
-                  "condition":"Fasteners - pins, bolts, safety clips, e",
-                  "condition_num":9,
-                  "violation_date":"2017-02-21T00:00:00.000Z",
-                  "correction_date":null,
-                  "resolve_date":"2017-03-10T00:00:00.000Z",
-                  "comment":"DOG LATCH BROKEN AT ENTERANCE GATE."
-               },
-               {  
-                  "condition":"Bracing - Ride supports.",
-                  "condition_num":5,
-                  "violation_date":"2017-02-21T00:00:00.000Z",
-                  "correction_date":null,
-                  "resolve_date":"2017-03-10T00:00:00.000Z",
-                  "comment":"REPLACE 4 FLAGGED TIRES ON INSIDE OF TURN JUST OUT OF STATION."
-               },
-               {  
-                  "condition":"Retaining Devices.",
-                  "condition_num":18,
-                  "violation_date":"2017-02-21T00:00:00.000Z",
-                  "correction_date":null,
-                  "resolve_date":"2017-03-10T00:00:00.000Z",
-                  "comment":"PROVIDE MISSING ZIP TIES ON LIGHT BARS IN STATION."
-               },
-               {  
-                  "condition":"Bracing - Ride supports.",
-                  "condition_num":5,
-                  "violation_date":"2017-02-21T00:00:00.000Z",
-                  "correction_date":null,
-                  "resolve_date":"2017-03-10T00:00:00.000Z",
-                  "comment":"REPLACE JOIST ON ENTERANCE EDGE OF STATION ROOF."
-               },
-               {  
-                  "condition":"Bracing - Ride supports.",
-                  "condition_num":5,
-                  "violation_date":"2018-02-23T00:00:00.000Z",
-                  "correction_date":"2018-03-06T00:00:00.000Z",
-                  "resolve_date":"2018-03-06T00:00:00.000Z",
-                  "comment":"REPAIR/REPLACE TRUSS 1ST LEFT, 2ND LEFT, 11TH RIGHT FROM EXIT SIDE."
-               },
-               {  
-                  "condition":"Electrical.",
-                  "condition_num":8,
-                  "violation_date":"2018-02-23T00:00:00.000Z",
-                  "correction_date":null,
-                  "resolve_date":"2018-03-08T00:00:00.000Z",
-                  "comment":"TOO MUCH STATIC IN COMMUNICATION P.A. SYSTEM."
-               },
-               {  
-                  "condition":"Electrical.",
-                  "condition_num":8,
-                  "violation_date":"2018-02-23T00:00:00.000Z",
-                  "correction_date":null,
-                  "resolve_date":"2018-03-08T00:00:00.000Z",
-                  "comment":"REPLACE/REMOVE BROKEN ELECTRICAL BOXES AT DISPATCH STATION."
-               },
-               {  
-                  "condition":"Retaining Devices.",
-                  "condition_num":18,
-                  "violation_date":"2018-02-23T00:00:00.000Z",
-                  "correction_date":null,
-                  "resolve_date":"2018-03-08T00:00:00.000Z",
-                  "comment":"SAFETY CABLE ON SIGN IN Q-LINE."
-               },
-               {  
-                  "condition":"Electrical.",
-                  "condition_num":8,
-                  "violation_date":"2018-02-23T00:00:00.000Z",
-                  "correction_date":null,
-                  "resolve_date":"2018-03-08T00:00:00.000Z",
-                  "comment":"REPAIR EMERGENCY LIGHT IN Q-LINE."
-               },
-               {  
-                  "condition":"Fences.",
-                  "condition_num":10,
-                  "violation_date":"2018-02-23T00:00:00.000Z",
-                  "correction_date":null,
-                  "resolve_date":"2018-03-08T00:00:00.000Z",
-                  "comment":"REPLACE FLAGGED CHAIN LINK FENCE POST."
-               },
-               {  
-                  "condition":"Welds",
-                  "condition_num":22,
-                  "violation_date":"2018-02-23T00:00:00.000Z",
-                  "correction_date":null,
-                  "resolve_date":"2018-03-09T00:00:00.000Z",
-                  "comment":"BROKEN WELD ON BARRIER SUPPORT AT LAST TURN AND TRACK BEHIND DISPATCH. (FLAGGED)"
-               },
-               {  
-                  "condition":"Welds",
-                  "condition_num":22,
-                  "violation_date":"2018-02-23T00:00:00.000Z",
-                  "correction_date":null,
-                  "resolve_date":"2018-03-09T00:00:00.000Z",
-                  "comment":"CRACKED WELDS ON CAR #21/33."
-               },
-               {  
-                  "condition":"Bumpers",
-                  "condition_num":26,
-                  "violation_date":"2018-02-23T00:00:00.000Z",
-                  "correction_date":null,
-                  "resolve_date":"2018-03-09T00:00:00.000Z",
-                  "comment":"REPLACE BUMPER BAR ON CAR #13."
-               }
             ]
          }
       ]}
 }
 
 
-###Methods
+###Components
+####Park
+This is a result. It takes the park_id of a certain park and shows all of its rides and inspections
+
+####Search
+This is the homepage that has the search to find parks as well as it displays the results and the top violations.
+
+####Nearby
+This is at the bottom of the park page and shows nearby parks based on zipcode or county.
+
+####Nav
+This is the AJC nav bar at the top of the app
+
+####Inspection
+This is within the park component and displays each of the inspections for the rides
+
+###Items to fix
+The following items are errors that I wished to fix if I had more time:
+-Fix the advanced search styling
+-Fix the styling of the inspectiosn list
+-Add an about page
+-Have the conditions dict in inspections be from calling the DB rather than hardcoded
+-Add more saved links next to "Six Flags" on search
+
+###Author
+This was created by Jacquelyn Elias in November 2018

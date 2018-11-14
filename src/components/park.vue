@@ -479,7 +479,6 @@ export default {
 }
 
 
-
 .clickable :hover {
     cursor:pointer;
 }
